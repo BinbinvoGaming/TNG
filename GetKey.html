@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TNG - Exploit On Top.</title>
+    <style>
+        body {
+            background-color: #121212; /* Thay đổi màu nền của trang */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            height: 100vh; /* Đảm bảo body có chiều cao 100% viewport */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; /* Căn giữa văn bản và nút theo chiều dọc */
+            text-align: center; /* Căn giữa văn bản */
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: white; /* Màu chữ */
+            margin-bottom: 20px; /* Khoảng cách giữa tiêu đề và nút */
+        }
+
+        .button[data-v-a6254c11] {
+            align-items: center;
+            background-color: #e6e6e6;
+            border-radius: 8px;
+            color: #2f3031;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            font-size: 14px;
+            font-weight: 600;
+            gap: 8px;
+            height: 36px;
+            justify-content: center;
+            padding: 0 14px; /* Căn giữa văn bản và điều chỉnh padding */
+            text-decoration: none;
+            width: auto; /* Đặt chiều rộng theo nội dung */
+            max-width: 300px; /* Tùy chọn: Đặt chiều rộng tối đa cho nút */
+            box-sizing: border-box; /* Đảm bảo padding không làm nút vượt quá kích thước */
+        }
+        .button[data-v-a6254c11],
+        .button[data-v-a6254c11]:hover {
+            transition: all .2s ease-in-out;
+        }
+        .button[data-v-a6254c11]:hover {
+            background-color: #fff;
+        }
+
+        .navbar-container[data-v-159ce0ca] {
+            display: flex;
+            left: 50%;
+            overscroll-behavior: contain;
+            position: fixed;
+            top: 0;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .navbar[data-v-159ce0ca],
+        .navbar-container[data-v-159ce0ca] {
+            justify-content: center;
+            padding: 16px;
+            width: 100%;
+        }
+        .navbar[data-v-159ce0ca] {
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            background: hsla(0, 0%, 8%, .749);
+            border: 1px solid hsla(0, 0%, 100%, .06);
+            border-radius: 16px;
+            box-shadow: inset 0 1px 1px 0 hsla(0, 0%, 100%, .15);
+            display: grid!important;
+            grid-template-columns: 1fr;
+            grid-template-rows: 24px auto;
+            height: 76px;
+            max-width: 1204px;
+            overflow: hidden;
+            transform: translateZ(0);
+            transition: height .3s ease, transform .3s ease;
+            will-change: height, transform;
+        }
+        .icon[data-v-159ce0ca] {
+            align-items: center;
+            color: #fff;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            left: 32px;
+            text-decoration: none;
+            width: auto;
+        }
+        .icon img[data-v-159ce0ca] {
+            height: 24px;
+            width: 24px;
+        }
+        .icon p[data-v-159ce0ca] {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .links[data-v-159ce0ca] {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 48px 0 32px;
+        }
+        .links .link[data-v-159ce0ca] {
+            color: #9c9c9d;
+            font-size: 14px;
+            letter-spacing: .2px;
+            text-decoration: none;
+            transition: all .2s ease-in-out;
+        }
+        .links .link[data-v-159ce0ca]:hover {
+            color: #fff;
+            transition: all .2s ease-in-out;
+        }
+        .download[data-v-159ce0ca] {
+            border-top: 1px solid hsla(0, 0%, 100%, .1);
+            display: flex;
+            padding-top: 32px;
+        }
+        .icon-container[data-v-159ce0ca] {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .hamburger[data-v-159ce0ca] {
+            cursor: pointer;
+            height: 16px;
+            position: relative;
+            transform: translateY(0) rotate(0deg);
+            transition: transform .5s ease, opacity .3s ease;
+            width: 24px;
+            will-change: transform;
+        }
+        .hamburger .line[data-v-159ce0ca] {
+            background: hsla(0, 0%, 100%, .9);
+            height: 1px;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            transition: transform .5s, opacity .25s;
+            width: 100%;
+            will-change: normal;
+        }
+        .hamburger .line[data-v-159ce0ca]:first-child {
+            top: 10%;
+        }
+        .hamburger .line[data-v-159ce0ca]:nth-child(2) {
+            top: 50%;
+        }
+        .hamburger .line[data-v-159ce0ca]:nth-child(3) {
+            top: 90%;
+        }
+        @media (min-width:720px) {
+            .navbar[data-v-159ce0ca] {
+                display: flex!important;
+                overflow: visible;
+                padding: 16px 32px;
+            }
+            .icon-container[data-v-159ce0ca] {
+                justify-content: center;
+                left: 32px;
+                width: auto;
+            }
+            .download[data-v-159ce0ca],
+            .icon-container[data-v-159ce0ca] {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .download[data-v-159ce0ca] {
+                border-top: none;
+                display: grid;
+                height: 100%;
+                right: 32px;
+            }
+            .download[data-v-159ce0ca],
+            .links[data-v-159ce0ca] {
+                align-items: center;
+                padding: 0;
+            }
+            .links[data-v-159ce0ca] {
+                flex-direction: row;
+                gap: 32px;
+            }
+            .hamburger[data-v-159ce0ca] {
+                display: none;
+            }
+        }
+        @media (max-width:720px) {
+            .download[data-v-159ce0ca] {
+                display: none;
+            }
+            .navbar[data-v-159ce0ca] {
+                align-items: baseline;
+                display: flex;
+                flex-direction: column;
+                height: 58px;
+                padding: 16px;
+            }
+            .icon[data-v-159ce0ca] {
+                left: 16px;
+            }
+            .icon-container[data-v-159ce0ca] {
+                height: min-content;
+                width: 100%;
+            }
+            .links[data-v-159ce0ca] {
+                display: flex;
+                gap: 24px;
+                padding-bottom: 0;
+                padding-top: 32px;
+            }
+            .link[data-v-159ce0ca] {
+                padding-left: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar-container" data-v-159ce0ca>
+        <div class="navbar" data-v-159ce0ca>
+            <div class="icon-container" data-v-159ce0ca>
+                <a aria-current="page" href="/" class="router-link-active router-link-exact-active icon" data-v-159ce0ca>
+                    <img onerror="this.setAttribute('data-error', 1)" width="24" height="24" alt="logo" src="https://i.imgur.com/PvutwW4.png" data-v-159ce0ca>
+                    <p data-v-159ce0ca>TNG</p>
+                </a>
+                <div class="hamburger" data-v-159ce0ca>
+                    <div class="line" data-v-159ce0ca></div>
+                    <div class="line" data-v-159ce0ca></div>
+                    <div class="line" data-v-159ce0ca></div>
+                </div>
+            </div>
+            <div class="links" data-v-159ce0ca>
+                <a class="link" href="https://tngaming123.github.io/TNG/" target="_blank" data-v-159ce0ca>Home</a>
+                <a href="https://discord.gg/3dg5dk6u5m" class="link" data-v-159ce0ca>Changelog</a>
+                <a class="link" href="https://discord.gg/3dg5dk6u5m" target="_blank" data-v-159ce0ca>Discord</a>
+                <a class="link" href="https://www.youtube.com/@tngaminghack" target="_blank" data-v-159ce0ca>Youtube</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1>Get Key TNG</h1>
+        <a href="https://your-link-here.com" class="button" data-v-a6254c11>Click me</a>
+    </div>
+</body>
+</html>
