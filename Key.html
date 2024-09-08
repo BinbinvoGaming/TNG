@@ -3,104 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TNG Key</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #121212; /* Nền đen */
-            color: #e0e0e0; /* Màu chữ sáng */
-        }
-        .container {
-            text-align: center;
-            padding: 20px;
-            border: 2px solid #333;
-            background-color: #1e1e1e; /* Nền container tối hơn */
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            max-width: 600px; /* Đặt chiều rộng tối đa cho container */
-            width: 100%; /* Đặt chiều rộng của container chiếm toàn bộ chiều rộng màn hình */
-        }
-        #keyBox {
-            padding: 10px;
-            font-size: 18px;
-            border: 1px solid #444;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            width: 100%; /* Đặt chiều rộng của textbox chiếm toàn bộ chiều rộng của container */
-            max-width: 600px; /* Đặt chiều rộng tối đa cho textbox */
-            background-color: #333; /* Nền ô nhập liệu tối hơn */
-            color: #e0e0e0; /* Màu chữ sáng */
-            box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước */
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .logo {
-            width: 30px; /* Điều chỉnh kích thước logo tùy theo nhu cầu */
-            vertical-align: middle;
-            margin-right: 10px;
-        }
-        .message {
-            margin-top: 10px;
-            color: #00ff00; /* Màu chữ cho thông báo thành công */
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>TNG - Exploit On Top.</title>
 </head>
 <body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                <span>TNG </span>Exploit
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="index.html">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="GetKey.html">Get Key</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="#">Premium</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="#">Admin</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a href="#">Contact</a></div>
+            </div>
+        </div>
+        <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        <div class="dropdown">
+            <div class="links">
+                <a href="">Home</a>
+                <a href="">About</a>
+                <a href="">Skills</a>
+                <a href="">Service</a>
+                <a href="">Contact</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
 
-<div class="container">
-    <h2><img src="https://i.imgur.com/PvutwW4.png" alt="Logo" class="logo">Your TNG Key:</h2>
-    <input type="text" id="keyBox" readonly>
-    <br>
-    <button onclick="copyKey()">Copy Key</button>
-    <p id="copyMessage" class="message"></p> <!-- Thêm phần tử để hiển thị thông báo -->
-</div>
+    <section>
+        <div class="main-container">
+            <div class="container" data-aos="fade-up" data-aos-duration="1500">
+                <h2 style="color: #ffffff;">Your TNG Key:</h2> <!-- Đổi màu chữ thành trắng -->
+                <input type="text" id="keyBox" readonly>
+                <br>
+                <div class="btn" data-aos="zoom-out" data-aos-duration="1500" data-aos-delay="1800" onclick="copyKey()">
+                        <button>
+                            <i class="fa-solid fa-copy"></i> Copy Key
+                        </button>
+                </div> 
+                <p id="copyMessage" class="message"></p> <!-- Thêm phần tử để hiển thị thông báo -->
+            </div>
+            <div class="image" data-aos="zoom-in" data-aos-duration="3000">
+                <img src="https://i.imgur.com/U15wnsn.png" alt="">
+            </div>
+        </div>
+    </section>
 
-<script>
-    // Function to get the value of a specific query parameter from the URL
-    function getQueryParam(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
-    }
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({offset:0,});
 
-    // Display the 'key' parameter in the input box
-    const key = getQueryParam('key');
-    document.getElementById('keyBox').value = key ? key : 'No key found';
+      // Function to get the value of a specific query parameter from the URL
+      function getQueryParam(param) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(param);
+      }
 
-    // Function to copy the key to clipboard and show a custom message
-    function copyKey() {
-        const keyBox = document.getElementById('keyBox');
-        keyBox.select();
-        keyBox.setSelectionRange(0, 99999); // For mobile devices
+      // Display the 'key' parameter in the input box
+      const key = getQueryParam('key');
+      document.getElementById('keyBox').value = key ? key : 'No key found';
 
-        // Use Clipboard API if supported
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(keyBox.value).then(() => {
-                document.getElementById('copyMessage').textContent = 'Key copied: ' + keyBox.value;
-            }).catch(err => {
-                document.getElementById('copyMessage').textContent = 'Failed to copy key: ' + err;
-            });
-        } else {
-            // Fallback to document.execCommand
-            document.execCommand('copy');
-            document.getElementById('copyMessage').textContent = 'Key copied: ' + keyBox.value;
-        }
-    }
-</script>
+      // Function to copy the key to clipboard and show a custom message
+      function copyKey() {
+          const keyBox = document.getElementById('keyBox');
+          keyBox.select();
+          keyBox.setSelectionRange(0, 99999); // For mobile devices
 
+          // Use Clipboard API if supported
+          if (navigator.clipboard) {
+              navigator.clipboard.writeText(keyBox.value).then(() => {
+                  document.getElementById('copyMessage').textContent = 'Key copied: ' + keyBox.value;
+              }).catch(err => {
+                  document.getElementById('copyMessage').textContent = 'Failed to copy key: ' + err;
+              });
+          } else {
+              // Fallback to document.execCommand
+              document.execCommand('copy');
+              document.getElementById('copyMessage').textContent = 'Key copied: ' + keyBox.value;
+          }
+      }
+    </script>
 </body>
 </html>
